@@ -669,21 +669,46 @@
             this.value = val;
         });
 
-        // Form submission — replace YOUR_FORMSPREE_ID with your ID from formspree.io
-        const FORMSPREE_URL = 'https://formspree.io/f/YOUR_FORMSPREE_ID';
+        /*
+         * SETUP — Google Sheets integration
+         * ──────────────────────────────────
+         * 1. Open your Google Sheet → Extensions → Apps Script
+         * 2. Paste the following script and save (Ctrl+S):
+         *
+         *    function doPost(e) {
+         *      try {
+         *        const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+         *        if (sheet.getLastRow() === 0) {
+         *          sheet.appendRow(['Timestamp','First Name','Last Name','Email','Phone','Has Agent','Timeline','Comments']);
+         *        }
+         *        const d = JSON.parse(e.postData.contents);
+         *        sheet.appendRow([new Date().toLocaleString(), d.firstName||'', d.lastName||'',
+         *          d.email||'', d.phone||'', d.hasAgent||'', d.timeline||'', d.comments||'']);
+         *        return ContentService.createTextOutput('ok');
+         *      } catch(err) {
+         *        return ContentService.createTextOutput('error');
+         *      }
+         *    }
+         *
+         * 3. Click Deploy → New deployment → Web app
+         *    • Execute as: Me
+         *    • Who has access: Anyone
+         * 4. Copy the Web app URL and paste it below as GOOGLE_SHEET_URL
+         */
+        const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbxzcRltWet4Pn4EGKwJTh782DIGDYjPE45--sziokfNRtIAKpOCh06cgLfjmyy8eTDVxA/exec';
 
         document.getElementById('signInForm').addEventListener('submit', async function(e) {
             e.preventDefault();
 
             const firstName = document.getElementById('firstName').value.trim();
-            const lastName = document.getElementById('lastName').value.trim();
-            const email = document.getElementById('email').value.trim();
+            const lastName  = document.getElementById('lastName').value.trim();
+            const email     = document.getElementById('email').value.trim();
 
             if (!firstName || !lastName || !email) {
                 const missing = [];
                 if (!firstName) missing.push('First Name');
-                if (!lastName) missing.push('Last Name');
-                if (!email) missing.push('Email Address');
+                if (!lastName)  missing.push('Last Name');
+                if (!email)     missing.push('Email Address');
                 alert(`Please fill in the required fields:\n• ${missing.join('\n• ')}`);
                 return;
             }
@@ -698,22 +723,28 @@
             btn.disabled = true;
             btn.textContent = 'Sending...';
 
+            const payload = {
+                firstName,
+                lastName,
+                email,
+                phone:    document.getElementById('phone').value.trim(),
+                hasAgent: (document.querySelector('input[name="hasAgent"]:checked') || {}).value || '',
+                timeline: document.getElementById('timeline').value,
+                comments: document.getElementById('comments').value.trim()
+            };
+
             try {
-                const response = await fetch(FORMSPREE_URL, {
+                // no-cors required for Apps Script — response is opaque but data saves fine
+                await fetch(GOOGLE_SHEET_URL, {
                     method: 'POST',
-                    headers: { 'Accept': 'application/json' },
-                    body: new FormData(this)
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'text/plain' },
+                    body: JSON.stringify(payload)
                 });
 
-                if (response.ok) {
-                    this.style.display = 'none';
-                    document.querySelector('.form-title').style.display = 'none';
-                    document.getElementById('successMessage').classList.add('visible');
-                } else {
-                    btn.disabled = false;
-                    btn.textContent = 'Sign In & Submit';
-                    alert('Something went wrong. Please try again.');
-                }
+                this.style.display = 'none';
+                document.querySelector('.form-title').style.display = 'none';
+                document.getElementById('successMessage').classList.add('visible');
             } catch {
                 btn.disabled = false;
                 btn.textContent = 'Sign In & Submit';
