@@ -559,11 +559,11 @@
         const formContainer = document.querySelector('.form-container');
         if (formContainer) {
             formContainer.addEventListener('mouseenter', function() {
-                this.style.borderColor = 'var(--gold)';
+                this.style.borderColor = '#D4AF37';
             });
-            
+
             formContainer.addEventListener('mouseleave', function() {
-                this.style.borderColor = 'var(--light-green)';
+                this.style.borderColor = '#C8D5B9';
             });
         }
 
@@ -579,7 +579,7 @@
             threshold: 0.1
         });
 
-        document.querySelectorAll('.welcome, .instructions, .form-container').forEach(el => {
+        document.querySelectorAll('.welcome, .form-container').forEach(el => {
             observer.observe(el);
         });
     </script>
