@@ -669,8 +669,10 @@
             this.value = val;
         });
 
-        // Form submission
-        document.getElementById('signInForm').addEventListener('submit', function(e) {
+        // Form submission — replace YOUR_FORMSPREE_ID with your ID from formspree.io
+        const FORMSPREE_URL = 'https://formspree.io/f/YOUR_FORMSPREE_ID';
+
+        document.getElementById('signInForm').addEventListener('submit', async function(e) {
             e.preventDefault();
 
             const firstName = document.getElementById('firstName').value.trim();
@@ -682,7 +684,6 @@
                 if (!firstName) missing.push('First Name');
                 if (!lastName) missing.push('Last Name');
                 if (!email) missing.push('Email Address');
-
                 alert(`Please fill in the required fields:\n• ${missing.join('\n• ')}`);
                 return;
             }
@@ -693,10 +694,31 @@
                 return;
             }
 
-            // Hide form, show success
-            this.style.display = 'none';
-            document.querySelector('.form-title').style.display = 'none';
-            document.getElementById('successMessage').classList.add('visible');
+            const btn = this.querySelector('.submit-btn');
+            btn.disabled = true;
+            btn.textContent = 'Sending...';
+
+            try {
+                const response = await fetch(FORMSPREE_URL, {
+                    method: 'POST',
+                    headers: { 'Accept': 'application/json' },
+                    body: new FormData(this)
+                });
+
+                if (response.ok) {
+                    this.style.display = 'none';
+                    document.querySelector('.form-title').style.display = 'none';
+                    document.getElementById('successMessage').classList.add('visible');
+                } else {
+                    btn.disabled = false;
+                    btn.textContent = 'Sign In & Submit';
+                    alert('Something went wrong. Please try again.');
+                }
+            } catch {
+                btn.disabled = false;
+                btn.textContent = 'Sign In & Submit';
+                alert('Network error. Please check your connection and try again.');
+            }
         });
 
         // Observe elements for scroll-in animation
