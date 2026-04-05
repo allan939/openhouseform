@@ -107,46 +107,30 @@
         .particle:nth-child(6) { left: 85%; animation-delay: 5s; }
 
         @keyframes rise {
-            0% {
-                transform: translateY(100vh) scale(0);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-100px) scale(1);
-                opacity: 0;
-            }
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100px) scale(1); opacity: 0; }
         }
 
         /* Main container */
         .container {
             position: relative;
-            max-width: 1100px;
+            max-width: 760px;
             margin: 40px auto;
             z-index: 10;
             animation: slideIn 0.8s ease-out;
         }
 
         @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         /* Header */
         .header {
             background: linear-gradient(135deg, var(--forest-green) 0%, var(--sage-green) 100%);
-            padding: 60px 40px;
+            padding: 50px 40px;
             border-radius: 25px 25px 0 0;
             position: relative;
             overflow: hidden;
@@ -173,7 +157,7 @@
             width: 70px;
             height: 70px;
             background: var(--gold);
-            margin: 0 auto 25px;
+            margin: 0 auto 20px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -190,16 +174,16 @@
 
         .header h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 3.5em;
+            font-size: 2.8em;
             color: var(--white);
             text-align: center;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             animation: fadeIn 1s ease-out 0.2s both;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
         }
 
         .header p {
-            font-size: 1.2em;
+            font-size: 1.1em;
             color: var(--light-gold);
             text-align: center;
             font-weight: 300;
@@ -207,20 +191,14 @@
         }
 
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         /* Content area */
         .content {
             background: var(--white);
-            padding: 50px 40px;
+            padding: 45px 40px;
             border-radius: 0 0 25px 25px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
             position: relative;
@@ -240,22 +218,22 @@
 
         .welcome {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 35px;
             animation: fadeIn 1.2s ease-out 0.6s both;
         }
 
         .welcome h2 {
             font-family: 'Playfair Display', serif;
-            font-size: 2.5em;
+            font-size: 2em;
             color: var(--forest-green);
-            margin-bottom: 20px;
+            margin-bottom: 12px;
         }
 
         .welcome p {
-            font-size: 1.1em;
+            font-size: 1em;
             line-height: 1.8;
-            color: #555;
-            max-width: 700px;
+            color: #666;
+            max-width: 580px;
             margin: 0 auto;
         }
 
@@ -263,7 +241,7 @@
         .divider {
             height: 2px;
             background: linear-gradient(90deg, transparent, var(--sage-green), var(--gold), var(--sage-green), transparent);
-            margin: 40px 0;
+            margin: 30px 0;
             position: relative;
             animation: expand 1s ease-out 0.8s both;
         }
@@ -285,97 +263,25 @@
             font-size: 14px;
         }
 
-        /* Instructions */
-        .instructions {
-            background: linear-gradient(135deg, #f9fdf7 0%, #f0f8ed 100%);
-            border-left: 4px solid var(--sage-green);
-            padding: 30px;
-            margin: 30px 0;
-            border-radius: 12px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-            animation: slideRight 1s ease-out 1s both;
-        }
-
-        @keyframes slideRight {
-            from {
-                opacity: 0;
-                transform: translateX(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        .instructions h3 {
-            font-family: 'Playfair Display', serif;
-            color: var(--forest-green);
-            font-size: 1.6em;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .instructions ol {
-            margin-left: 25px;
-            color: #444;
-            line-height: 2;
-        }
-
-        .instructions li {
-            margin-bottom: 10px;
-        }
-
-        .instructions code {
-            background: var(--white);
-            padding: 3px 8px;
-            border-radius: 4px;
-            font-family: 'Courier New', monospace;
-            color: var(--forest-green);
-            font-size: 0.9em;
-            border: 1px solid var(--light-green);
-        }
-
-        .instructions a {
-            color: var(--sage-green);
-            text-decoration: none;
-            font-weight: 600;
-            border-bottom: 2px solid var(--gold);
-            transition: all 0.3s ease;
-        }
-
-        .instructions a:hover {
-            color: var(--forest-green);
-            border-bottom-color: var(--sage-green);
-        }
-
         /* Form container */
         .form-container {
             background: var(--white);
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 10px 30px rgba(45, 80, 22, 0.1);
+            border-radius: 18px;
+            padding: 35px;
+            box-shadow: 0 8px 30px rgba(45, 80, 22, 0.08);
             border: 2px solid var(--light-green);
             position: relative;
-            animation: scaleUp 1s ease-out 1.2s both;
-            transition: all 0.4s ease;
-        }
-
-        @keyframes scaleUp {
-            from {
-                opacity: 0;
-                transform: scale(0.95);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
+            animation: scaleUp 1s ease-out 1s both;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
         .form-container:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(45, 80, 22, 0.15);
+            box-shadow: 0 12px 40px rgba(45, 80, 22, 0.13);
+        }
+
+        @keyframes scaleUp {
+            from { opacity: 0; transform: scale(0.97); }
+            to { opacity: 1; transform: scale(1); }
         }
 
         .form-container::before {
@@ -386,57 +292,193 @@
             right: 0;
             height: 4px;
             background: linear-gradient(90deg, var(--sage-green), var(--gold), var(--sage-green));
-            border-radius: 20px 20px 0 0;
+            border-radius: 18px 18px 0 0;
         }
 
         .form-title {
             font-family: 'Playfair Display', serif;
-            font-size: 2em;
+            font-size: 1.7em;
             color: var(--forest-green);
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 28px;
         }
 
-        /* Placeholder */
-        .placeholder {
-            text-align: center;
-            padding: 60px 30px;
-            background: linear-gradient(135deg, #fafdfb 0%, #f5faf2 100%);
-            border-radius: 15px;
-            border: 2px dashed var(--sage-green);
+        /* Form fields */
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            margin-bottom: 18px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            font-size: 0.85em;
+            font-weight: 600;
+            color: var(--forest-green);
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1.5px solid var(--light-green);
+            border-radius: 10px;
+            font-family: 'Lato', sans-serif;
+            font-size: 0.97em;
+            color: var(--dark);
+            background: #fafdfb;
+            transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+            outline: none;
+            appearance: none;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="tel"]:focus,
+        select:focus,
+        textarea:focus {
+            border-color: var(--gold);
+            background: var(--white);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15);
+        }
+
+        select {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2387A96B' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+            padding-right: 38px;
+            cursor: pointer;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 90px;
+        }
+
+        /* Radio group */
+        .radio-group {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            padding-top: 4px;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            font-size: 0.97em;
+            color: #444;
+        }
+
+        .radio-option input[type="radio"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--sage-green);
+            cursor: pointer;
+        }
+
+        /* Submit button */
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            margin-top: 10px;
+            background: linear-gradient(135deg, var(--forest-green) 0%, var(--sage-green) 100%);
+            color: var(--white);
+            border: none;
+            border-radius: 12px;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1em;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            cursor: pointer;
             position: relative;
+            overflow: hidden;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 4px 15px rgba(45, 80, 22, 0.3);
         }
 
-        .placeholder-icon {
-            font-size: 4em;
-            margin-bottom: 20px;
-            animation: bounce 2s ease-in-out infinite;
+        .submit-btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+            transition: left 0.4s ease;
         }
 
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(45, 80, 22, 0.4);
         }
 
-        .placeholder h3 {
+        .submit-btn:hover::after {
+            left: 100%;
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Success state */
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .success-message.visible {
+            display: block;
+        }
+
+        .success-icon {
+            font-size: 3.5em;
+            margin-bottom: 15px;
+        }
+
+        .success-message h3 {
             font-family: 'Playfair Display', serif;
             font-size: 1.8em;
             color: var(--forest-green);
             margin-bottom: 10px;
         }
 
-        .placeholder p {
-            color: #777;
-            font-size: 1.1em;
+        .success-message p {
+            color: #666;
+            font-size: 1em;
+            line-height: 1.7;
+        }
+
+        /* Required asterisk */
+        .required {
+            color: var(--dark-gold);
         }
 
         /* Footer */
         .footer {
             text-align: center;
-            padding: 30px;
-            color: #888;
-            font-size: 0.9em;
-            animation: fadeIn 1.5s ease-out 1.4s both;
+            padding: 25px;
+            color: #999;
+            font-size: 0.85em;
+            animation: fadeIn 1.5s ease-out 1.2s both;
         }
 
         .footer::before {
@@ -445,47 +487,38 @@
             width: 120px;
             height: 2px;
             background: linear-gradient(90deg, transparent, var(--gold), transparent);
-            margin: 0 auto 20px;
+            margin: 0 auto 18px;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
             .container {
-                margin: 20px;
+                margin: 15px;
             }
 
             .header {
-                padding: 40px 25px;
-            }
-
-            .header h1 {
-                font-size: 2.5em;
-            }
-
-            .content {
                 padding: 35px 25px;
             }
 
-            .welcome h2 {
+            .header h1 {
                 font-size: 2em;
             }
 
-            .form-container {
+            .content {
                 padding: 30px 20px;
             }
 
-            .instructions {
-                padding: 20px;
+            .welcome h2 {
+                font-size: 1.6em;
             }
-        }
 
-        /* Interactive elements */
-        .glow-on-hover {
-            transition: all 0.3s ease;
-        }
+            .form-container {
+                padding: 25px 18px;
+            }
 
-        .glow-on-hover:hover {
-            box-shadow: 0 0 20px var(--gold);
+            .form-row {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -517,29 +550,88 @@
         <div class="content">
             <div class="welcome">
                 <h2>We're So Glad You're Here</h2>
-                <p>Thank you for taking the time to visit this beautiful property. We'd love to stay in touch and answer any questions you might have. Please sign in below so we can send you more information about this home.</p>
+                <p>Thank you for taking the time to visit this beautiful property. Please sign in below so we can stay in touch and answer any questions you might have.</p>
             </div>
 
             <div class="divider"></div>
 
-            <div class="form-container glow-on-hover">
+            <div class="form-container">
                 <h3 class="form-title">Visitor Sign-In</h3>
-                
-                <!-- Add your Google Form iframe below -->
-                <iframe 
-                    src="https://docs.google.com/forms/d/e/1FAIpQLSdGELMmWEBWDjvY_dBsOVddo-7lzmaY8bKRT8PPRuqyxVyvLw/viewform?embedded=true" 
-                    width="100%" 
-                    height="2058" 
-                    frameborder="0" 
-                    marginheight="0" 
-                    marginwidth="0">
-                </iframe>
-                
+
+                <form id="signInForm" novalidate>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name <span class="required">*</span></label>
+                            <input type="text" id="firstName" name="firstName" placeholder="Jane" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name <span class="required">*</span></label>
+                            <input type="text" id="lastName" name="lastName" placeholder="Smith" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email Address <span class="required">*</span></label>
+                            <input type="email" id="email" name="email" placeholder="jane@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" placeholder="(555) 000-0000">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <label>Are you currently working with a real estate agent?</label>
+                            <div class="radio-group">
+                                <label class="radio-option">
+                                    <input type="radio" name="hasAgent" value="yes"> Yes
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="hasAgent" value="no"> No
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="hasAgent" value="looking"> Still Looking
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <label for="timeline">Purchase Timeline</label>
+                            <select id="timeline" name="timeline">
+                                <option value="" disabled selected>Select a timeframe...</option>
+                                <option value="asap">As soon as possible</option>
+                                <option value="1-3months">1–3 months</option>
+                                <option value="3-6months">3–6 months</option>
+                                <option value="6months+">6+ months</option>
+                                <option value="browsing">Just browsing</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <label for="comments">Questions or Comments</label>
+                            <textarea id="comments" name="comments" placeholder="Anything you'd like us to know..."></textarea>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Sign In &amp; Submit</button>
+                </form>
+
+                <div class="success-message" id="successMessage">
+                    <div class="success-icon">🎉</div>
+                    <h3>Thank You for Signing In!</h3>
+                    <p>We're glad you stopped by. We'll be in touch soon with more information about this property.</p>
+                </div>
             </div>
         </div>
 
         <div class="footer">
-            <p>Powered by Google Forms • Your information is safe and secure</p>
+            <p>Your information is kept private and secure</p>
         </div>
     </div>
 
@@ -547,27 +639,67 @@
         // Parallax effect on scroll
         window.addEventListener('scroll', () => {
             const scrolled = window.pageYOffset;
-            const circles = document.querySelectorAll('.circle');
-            
-            circles.forEach((circle, index) => {
+            document.querySelectorAll('.circle').forEach((circle, index) => {
                 const speed = (index + 1) * 0.3;
                 circle.style.transform = `translateY(${scrolled * speed}px)`;
             });
         });
 
-        // Add smooth hover effect to form container
+        // Hover glow on form container
         const formContainer = document.querySelector('.form-container');
         if (formContainer) {
             formContainer.addEventListener('mouseenter', function() {
                 this.style.borderColor = '#D4AF37';
             });
-
             formContainer.addEventListener('mouseleave', function() {
                 this.style.borderColor = '#C8D5B9';
             });
         }
 
-        // Animate elements when they come into view
+        // Phone number auto-formatting
+        document.getElementById('phone').addEventListener('input', function() {
+            let val = this.value.replace(/\D/g, '').slice(0, 10);
+            if (val.length >= 7) {
+                val = `(${val.slice(0,3)}) ${val.slice(3,6)}-${val.slice(6)}`;
+            } else if (val.length >= 4) {
+                val = `(${val.slice(0,3)}) ${val.slice(3)}`;
+            } else if (val.length > 0) {
+                val = `(${val}`;
+            }
+            this.value = val;
+        });
+
+        // Form submission
+        document.getElementById('signInForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const firstName = document.getElementById('firstName').value.trim();
+            const lastName = document.getElementById('lastName').value.trim();
+            const email = document.getElementById('email').value.trim();
+
+            if (!firstName || !lastName || !email) {
+                const missing = [];
+                if (!firstName) missing.push('First Name');
+                if (!lastName) missing.push('Last Name');
+                if (!email) missing.push('Email Address');
+
+                alert(`Please fill in the required fields:\n• ${missing.join('\n• ')}`);
+                return;
+            }
+
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+
+            // Hide form, show success
+            this.style.display = 'none';
+            document.querySelector('.form-title').style.display = 'none';
+            document.getElementById('successMessage').classList.add('visible');
+        });
+
+        // Observe elements for scroll-in animation
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -575,9 +707,7 @@
                     entry.target.style.transform = 'translateY(0)';
                 }
             });
-        }, {
-            threshold: 0.1
-        });
+        }, { threshold: 0.1 });
 
         document.querySelectorAll('.welcome, .form-container').forEach(el => {
             observer.observe(el);
